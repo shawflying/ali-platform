@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "umi": "1.1.3",
+    "umi-plugin-yunfengdie": "0.4.3"
+  },
+  "name": "yunfengdie-study",
+  "author": "yourname",
+  "version": "1.0.0"
+}
