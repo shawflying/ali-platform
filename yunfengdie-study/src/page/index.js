@@ -82,7 +82,6 @@ export default function () {
                                 <div className={city.title}>{m}</div>
                                 <Grid data={all_list[m]}
                                     square={false}
-                                    key={i+100}
                                     columnNum={1}
                                     onClick={(node) => {
                                         router.push(`./index?city=${node.key}&page=1`);
@@ -99,11 +98,10 @@ export default function () {
                 }
 
                 hot_city_html.push(
-                    <div>
+                    <div key='111'>
                         <div className={city.title}>热门城市</div>
                         <Grid data={hot_list}
                             square={false}
-                            key={12312312}
                             columnNum={4}
                             onClick={(node) => {
                                 router.push(`./index?city=${node.key}&page=1`);
