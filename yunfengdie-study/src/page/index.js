@@ -8,6 +8,10 @@ export default function () {
       <Link to="/list">
         <Button type="primary">跳转到列表页</Button>
       </Link>
+
+      <Link to="/city">
+        <Button type="primary">跳转到城市列表</Button>
+      </Link>
     </div>
   );
 }
