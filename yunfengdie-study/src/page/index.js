@@ -1,134 +1,57 @@
-import { Grid } from 'antd-mobile';
-import city from "./city.css"
+import { Button } from 'antd-mobile';
 import router from 'umi/router';
+import styles from './index.css';
+import Link from 'umi/link';
 import dynamic from 'umi/dynamic';
-import $ from 'jquery';
-
-const zm_list = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-     "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z"
-];
-
-
 
 export default function () {
-    const App = dynamic(() => {
+    const App1 = dynamic(() => {
         return new Promise((resolve) => {
-            $.getJSON("http://m.daoxila.com/GongJu/city/list?type=all", function (res) {
-                if (res.code !== "0") {
-                    return;//获取信息失败
-                }
-                let list = res.data;
-                let all_list = {}
-                let hot_list = [];
-                list
-                    .sort(function (a, b) {
-                        var s = a.shortName.toLowerCase();
-                        var t = b.shortName.toLowerCase();
-                        if (s < t) return -1;
-                        if (s > t) return 1;
-                    })
-                    .forEach(function (m, i) {
-                        if (m.isHot === "T") {//热门城市
-                            hot_list.push({
-                                id: m.cityId,
-                                key: m.shortName,
-                                text: m.nameCn
-                            });
-                        }
-
-                        if (!all_list[m.shortName.substr(0, 1).toUpperCase()]) {
-                            all_list[m.shortName.substr(0, 1).toUpperCase()] = [];
-                        }
-                        all_list[m.shortName.substr(0, 1).toUpperCase()].push({
-                            id: m.cityId,
-                            key: m.shortName,
-                            text: m.nameCn
-                        });
-                    });
-
-                let all_list_html = [];
-                let hot_city_html = [];
-
-                for (let i = 0; i < zm_list.length; i++) {
-                    let m = zm_list[i];
-                    if (all_list[m]) {
-                        all_list_html.push(
-                            <div key={i}>
-                                <div className={city.title}>{m}</div>
-                                <Grid data={all_list[m]}
-                                    square={false}
-                                    columnNum={1}
-                                    onClick={(node) => {
-                                        router.push(`./index?city=${node.key}&page=1`);
-                                    }}
-                                    renderItem={dataItem => (
-                                        <div style={{ paddingLeft: '1.5px' }}>
-                                            <div style={{ paddingLeft: "1px", width: "50px", height: "20px" }}>{dataItem.text}</div>
-                                        </div>
-                                    )}
-                                ></Grid>
-                            </div>
-                        );
-                    }
-                }
-
-                hot_city_html.push(
-                    <div key='111'>
-                        <div className={city.title}>热门城市</div>
-                        <Grid data={hot_list}
-                            square={false}
-                            columnNum={4}
-                            onClick={(node) => {
-                                router.push(`./index?city=${node.key}&page=1`);
-                            }}
-                            renderItem={dataItem => (
-                                <div style={{ padding: '2.5px' }}>
-                                    <span>{dataItem.text}</span>
-                                </div>
-                            )}
-                        />
-                    </div>
-                );
-
-                resolve(() => (
+            resolve(() => {
+                return (
                     <div>
-                        {hot_city_html}
-                        {all_list_html}
+                        <p>app1</p>
                     </div>
                 )
-                );
-            });
+            })
         })
-    });
-
+    })
+    //组件
+    const App2 = dynamic(() => {
+        return new Promise((resolve) => {
+            resolve(() => {
+                return (
+                    <div>
+                        <p>app2</p>
+                    </div>
+                )
+            })
+        })
+    })
+    let config = { name: '张三' }
+    //return 返回的是一个temp
     return (
         <div>
-            <App />
+            <h1> hello world</h1>
+            <Link to="/city">
+                <Button className={styles.city}>访问城市列表</Button>
+            </Link>
+            <Button
+                data={"张三"}
+                onClick={(e) => {
+                    router.push(`./city`);
+                }} >点击router.push 跳转城市列表</Button>
+
+
+            <Button
+                data={config}
+                onClick={(node) => {
+                    console.log("按钮上的文字暂时无法获取")
+                }}>
+                获取点击按钮的参数
+            </Button>
+            <App1 />
+            <App2 />
         </div>
-    );
+    )
 }
