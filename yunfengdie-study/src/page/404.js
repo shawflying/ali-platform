@@ -10,7 +10,13 @@ export default function () {
         <div>
             <h1> hello 404</h1>
             <Link to="/city">
-                <Button className={styles.city}>访问城市列表</Button>
+                <Button
+                    className={styles.city}
+                    onClick={(e) => {
+                        router.goBack();
+                    }}
+
+                >返回上一页</Button>
             </Link>
         </div>
     )

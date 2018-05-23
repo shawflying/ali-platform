@@ -36,6 +36,9 @@ export default function () {
             <Link to="/city">
                 <Button className={styles.city}>访问城市列表</Button>
             </Link>
+            <Link to="/404?name=admin">
+                <Button className={styles['primary-color']}>404</Button>
+            </Link>
             <Button
                 data={"张三"}
                 onClick={(e) => {
