@@ -24,9 +24,7 @@ export default function (ctx) {
           console.log("-----", e.currentTarget.getAttribute("data"))
           console.log("-----", e.currentTarget.getAttribute('data-id'))
           console.log("按钮上的文字暂时无法获取")
-        }}>
-        获取点击按钮的参数
-            </Button>
+        }}>获取点击按钮的参数</Button>
 
 
       <Button
@@ -34,6 +32,9 @@ export default function (ctx) {
           router.push('/about?v=' + new Date().getTime());
         }}
       >关于项目</Button>
+      <Link to='/list'>
+        <Button>页面列表</Button>
+      </Link>
     </div>
   )
 }
