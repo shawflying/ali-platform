@@ -1,0 +1,25 @@
+.inner {
+  min-width: 100%;
+}
+
+body {
+  min-width: 100%;
+}
+
+.job-box {
+  margin-top: 0px;
+}
+
+.resume {
+  margin-right: 0px;
+}
+
+.resume-item .period {
+  float: right;
+  color: #9fa3b0;
+  font-size: 12px;
+}
+
+.account-item>span {
+  width: auto;
+}
