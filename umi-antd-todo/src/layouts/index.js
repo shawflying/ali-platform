@@ -1,11 +1,12 @@
+import style from './index.css'
 export default function (props) {
   return (
     <div>
-      <header>头部</header>
+      <header data-alt='头部' className={style.ctrl_dis}></header>
       {
         props.children
       }
-      <footer>底部</footer>
+      <footer data-alt="底部" className={style.ctrl_dis}></footer>
     </div>
   )
 }

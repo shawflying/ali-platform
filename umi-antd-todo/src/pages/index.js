@@ -4,49 +4,14 @@ import styles from './index.css';
 import Link from 'umi/link';
 import dynamic from 'umi/dynamic';
 
-export default function () {
-  const App1 = dynamic(() => {
-    return new Promise((resolve) => {
-      resolve(() => {
-        return (
-          <div>
-            <p>app1</p>
-          </div>
-        )
-      })
-    })
-  })
-  //组件
-  const App2 = dynamic(() => {
-    return new Promise((resolve) => {
-      resolve(() => {
-        return (
-          <div>
-            <p>app2</p>
-          </div>
-        )
-      })
-    })
-  })
-  let config = { name: '张三' }
+export default function (ctx) {
+  let query = ctx.location.query;//获取入参信息
+  let config = {}
+  config.name = query.name ? query.name : "guest"
   //return 返回的是一个temp
   return (
     <div>
-      <h1> hello world</h1>
-      <Link to="/city">
-        <Button className={styles.city}>访问城市列表</Button>
-      </Link>
-      <Link to="/404?name=admin">
-        <Button className={styles['primary-color']}>404</Button>
-      </Link>
-      <Link to="/alert">
-        <Button className={styles['primary-color']}>alert</Button>
-      </Link>
-      <Button
-        data={"张三"}
-        onClick={(e) => {
-          router.push(`./city`);
-        }} >点击router.push 跳转城市列表</Button>
+      <h1> hello {config.name}</h1>
       <Button
         data={config.name}
         data-id={1}
@@ -62,8 +27,13 @@ export default function () {
         }}>
         获取点击按钮的参数
             </Button>
-      <App1 />
-      <App2 />
+
+
+      <Button
+        onClick={(e) => {
+          router.push('/about?v=' + new Date().getTime());
+        }}
+      >关于项目</Button>
     </div>
   )
 }

@@ -1,8 +1,7 @@
 import { Button } from 'antd-mobile';
 import router from 'umi/router';
-import styles from './index.css';
-import Link from 'umi/link';
-import dynamic from 'umi/dynamic';
+import Link from "umi/link";
+import './index.css';//可以直接导入，不需要引用
 
 export default function (ctx) {
   console.log("上下文：", ctx);
@@ -11,11 +10,10 @@ export default function (ctx) {
   return (
     <div>
       <h1> hello world</h1>
-      <Button
-        onClick={(e) => {
-          router.goBack();
-        }}
-      >返回上一页</Button>
+      <Link to="/">
+        <Button>返回上一页</Button>
+      </Link>
+
     </div>
   )
 }
