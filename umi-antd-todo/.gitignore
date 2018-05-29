@@ -1,0 +1,9 @@
+node_modules
+dist
+.umi
+package-lock.json
+
+yarn.lock
+.vscode/*
+.audit_reports
+.DS_Store

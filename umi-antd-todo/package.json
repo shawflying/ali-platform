@@ -1,0 +1,14 @@
+{
+  "name": "umi-antd-todo",
+  "version": "1.0.0",
+  "description": "todo umi antd",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "umi": "^1.3.4"
+  }
+}
